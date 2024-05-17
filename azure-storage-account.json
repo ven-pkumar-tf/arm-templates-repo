@@ -5,18 +5,34 @@
     "functions": [],//optional
     "variables": {},//optional
     "resources": [
+        //Automatic navigation
         {
             "name": "pasupathikumarsa01",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-01-01",
             "tags": {
-                "displayName": "storageaccount1"
+                "displayName": "Using Snipped to creation"
             },
             "location": "[resourceGroup().location]",
             "kind": "StorageV2",
             "sku": {
                 "name": "Premium_LRS",
                 "tier": "Premium"
+            }
+        },
+        //Manual Creation
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2023-01-01",
+            "name": "manualsa01",
+            "location": "West India",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "tags": {
+                "displayName": "Manual Coding Creation"
             }
         }
     ],
