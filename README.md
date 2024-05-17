@@ -1,1 +1,1 @@
-# arm-templates-repo
+ARM Template Tutorial session
