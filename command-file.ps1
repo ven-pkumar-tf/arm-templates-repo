@@ -3,3 +3,4 @@ az deployment group create --resource-group arm-template --template-file azure-k
 az deployment group create --resource-group arm-template --template-file azure-single-vm.json
 az deployment group create --resource-group arm-template --template-file azure-web-app.json
 az deployment group create --resource-group arm-template --template-file azure-storage-account.json
+
