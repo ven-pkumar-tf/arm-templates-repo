@@ -11,6 +11,7 @@
             }
         }
     },//optional
+    
     "functions": [],//optional
     "variables": {},//optional
     "resources": [
