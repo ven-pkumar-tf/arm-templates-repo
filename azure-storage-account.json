@@ -16,7 +16,7 @@
     "resources": [
         //Automatic navigation
         {
-            "name": "[parameters('storage-name')]",
+            "name": "[toLower(parameters('storage-name'))]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-01-01",
             "tags": {
