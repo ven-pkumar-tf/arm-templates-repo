@@ -1,13 +1,22 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},//optional
+    "parameters": {
+        "storage-name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 20,
+            "metadata": {
+                "description": "Provide the Storage Account Name:"
+            }
+        }
+    },//optional
     "functions": [],//optional
     "variables": {},//optional
     "resources": [
         //Automatic navigation
         {
-            "name": "pasupathikumarsa01",
+            "name": "[parameters('storage-name')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-01-01",
             "tags": {
