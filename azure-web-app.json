@@ -22,19 +22,19 @@
             }
         },
         {
-            "name": "c2s-pasupathikumar-web-app-03",
+            "name": "[uniqueString(resourceGroup().id)]",
             "type": "Microsoft.Web/sites",
             "apiVersion": "2022-09-01",
             "location": "[resourceGroup().location]",
             "tags": {
                 "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/appServicePlan1')]": "Resource",
-                "displayName": "c2s-pasupathikumar-web-app-03"
+                "displayName": "[uniqueString(resourceGroup().id)]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', 'appServicePlan1')]"
             ],
             "properties": {
-                "name": "c2s-pasupathikumar-web-app-03",
+                "name": "[uniqueString(resourceGroup().id)]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'appServicePlan1')]"
             }
         },
