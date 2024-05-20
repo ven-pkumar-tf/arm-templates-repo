@@ -10,3 +10,6 @@ Using this powershell code automatically create the several resources (stroage a
 **multiple-vm-details.txt:**
  
  Using this file to provide the vm name, vm username, vm user password on array type. It's input data for create the multiple virtual machines.
+
+**azure-storage-account.json** file is use to create the storage account.
+**azure-web-app.json** file is use to create the azure web app and web app service plan.
