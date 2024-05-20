@@ -2,26 +2,18 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "vm-name": {
-       
-            "value": "pasupathivm"
-            
+        "kubernetes-name":{
+            "value": "c2sadoaks01"
         },
-        "public-ip-address": {
-           
-            "value": "pasupathikumarip"
+        "vmDetails":{
+            "value": [
+                {"vmName":"pasupathi01", "adminUsername":"Pasupathikumar", "adminPassword":"Pasupathikumar@819"},
+                {"vmName":"pasupathi02", "adminUsername":"Pasupathikumar", "adminPassword":"Pasupathikumar@819"},
+                {"vmName":"pasupathi03", "adminUsername":"Pasupathikumar", "adminPassword":"Pasupathikumar@819"}
+                ]
         },
-        "vm-storage-account-name": {
-           
-            "value": "pasupathisa01"
-        },
-        "vm-username": {
-           
-            "value": "Pasupathikumar"
-            
-        },
-        "vm-user-password": {
-            "value": "Pasupathikumar@819"
+        "storage-name":{
+            "value": "pasupathikumarsa01"
         }
 }
 }
