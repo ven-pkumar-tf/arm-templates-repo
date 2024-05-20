@@ -10,14 +10,13 @@
                 "description": "Provide the Storage Account Name:"
             }
         }
-    },//optional
-    
-    "functions": [],//optional
-    "variables": {},//optional
+    },
+    "functions": [],
+    "variables": {},
     "resources": [
         //Automatic navigation
         {
-            "name": "[toLower(parameters('storage-name'))]",
+            "name": "[toLower(concat(parameters('storage-name'), copyIndex()))]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-01-01",
             "tags": {
@@ -28,6 +27,21 @@
             "sku": {
                 "name": "Premium_LRS",
                 "tier": "Premium"
+            },
+            "resources": [
+                {
+                    "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+                    "name": "[toLower(concat(parameters('storage-name'), copyIndex(), '/default/input'))]",
+                    "apiVersion": "2023-01-01",
+                    "dependsOn": [
+                        "[concat(parameters('storage-name'), copyIndex())]"
+                    ],
+                    "location": "[resourceGroup().location]" // Specify the location of the storage account
+                }
+            ],
+            "copy": {
+                "name": "storageaccountclone",
+                "count": 3
             }
         },
         //Manual Creation
@@ -46,5 +60,5 @@
             }
         }
     ],
-    "outputs": {}//optional
+    "outputs": {}
 }

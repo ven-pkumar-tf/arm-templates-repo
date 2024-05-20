@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vm-name": {
+       
+            "value": "pasupathivm"
+            
+        },
+        "public-ip-address": {
+           
+            "value": "pasupathikumarip"
+        },
+        "vm-storage-account-name": {
+           
+            "value": "pasupathisa01"
+        },
+        "vm-username": {
+           
+            "value": "Pasupathikumar"
+            
+        },
+        "vm-user-password": {
+            "value": "Pasupathikumar@819"
+        }
+}
+}

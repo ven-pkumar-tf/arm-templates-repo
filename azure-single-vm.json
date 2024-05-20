@@ -4,14 +4,12 @@
     "parameters": {
         "vm-name": {
             "type": "string"
-            
         },
         "vm-storage-account-name": {
             "type": "string"
         },
         "vm-username": {
             "type": "string"
-            
         },
         "vm-user-password": {
             "type": "securestring"
@@ -34,7 +32,7 @@
             "kind": "Storage"
         },
         {
-            "name": "ubuntuVM1-PublicIP",
+            "name": "[concat('publicip-', parameters('vm-name'), copyIndex())]",
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2023-04-01",
             "location": "[resourceGroup().location]",
@@ -44,8 +42,12 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
-                    "domainNameLabel": "[toLower('ubuntuVM1')]"
+                    "domainNameLabel": "[toLower(concat('publicip-', parameters('vm-name'), copyIndex()))]"
                 }
+            },
+            "copy": {
+                "name": "publicipcopy",
+                "count": 3
             }
         },
         {
@@ -108,8 +110,8 @@
             "apiVersion": "2023-04-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses', 'ubuntuVM1-PublicIP')]",
-                "[resourceId('Microsoft.Network/virtualNetworks', 'ubuntuVM1-VirtualNetwork')]"
+                "[concat('publicip-', parameters('vm-name'), copyIndex())]",
+                "[resourceId('Microsoft.Network/virtualNetworks',  concat('ubuntuVM1-NetworkInterface', copyIndex()))]"
             ],
             "tags": {
                 "displayName": "ubuntuVM1-NetworkInterface"
@@ -121,7 +123,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'ubuntuVM1-PublicIP')]"
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat('publicip-', parameters('vm-name'), copyIndex()))]"
                             },
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'ubuntuVM1-VirtualNetwork', 'ubuntuVM1-VirtualNetwork-Subnet')]"
@@ -129,25 +131,29 @@
                         }
                     }
                 ]
+            },
+            "copy": {
+                "name": "niccopy",
+                "count": 3
             }
         },
         {
-            "name": "[toLower(parameters('vm-name'))]",
+            "name": "[toLower(concat(parameters('vm-name'), copyIndex()))]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2023-03-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/networkInterfaces', 'ubuntuVM1-NetworkInterface')]"
+                "[resourceId('Microsoft.Network/networkInterfaces',  concat('ubuntuVM1-NetworkInterface', copyIndex()))]"
             ],
             "tags": {
-                "displayName": "ubuntuVM1"
+                "displayName": "[concat(parameters('vm-name'), copyIndex())]"
             },
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "Standard_A2_v2"
                 },
                 "osProfile": {
-                    "computerName": "ubuntuVM1",
+                    "computerName": "[concat(parameters('vm-name'), copyIndex())]",
                     "adminUsername": "[parameters('vm-username')]",
                     "adminPassword": "[parameters('vm-user-password')]"
                 },
@@ -159,7 +165,7 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "name": "ubuntuVM1-OSDisk",
+                        "name": "[concat('ubuntuVM-OSDisk', copyIndex())]",
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
                     }
@@ -167,7 +173,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', 'ubuntuVM1-NetworkInterface')]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', concat('ubuntuVM1-NetworkInterface', copyIndex()))]"
                         }
                     ]
                 },
@@ -177,6 +183,10 @@
                         "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/',toLower(parameters('vm-storage-account-name')))).primaryEndpoints.blob]"
                     }
                 }
+            },
+            "copy": {
+                "name": "clonesinglevm",
+                "count": 3
             }
         }
     ],
