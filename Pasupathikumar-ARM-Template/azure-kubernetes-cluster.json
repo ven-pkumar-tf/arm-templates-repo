@@ -39,8 +39,8 @@
                     }
                 ],
                 "servicePrincipalProfile": {
-                     "clientId": "679bf607-d0e5-4ed2-8d84-6d2092e6d944",
-                    "secret": "9GG8Q~K7lHGCEZsL95JWzNnJD0KeiV8MNHRMmdiv"
+                    "clientId": "<Azure Entra ID - Application ID>",
+                    "secret": "<Azure Entra ID - Application Secret>"
                 }
             }
         }
