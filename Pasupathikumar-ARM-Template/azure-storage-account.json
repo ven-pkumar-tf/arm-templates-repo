@@ -12,17 +12,20 @@
         }
     },
     "functions": [],
-    "variables": {},
+    "variables": {
+        "storage-account-default-name": "[if(not(empty(parameters('storage-name'))), parameters('storage-name'), 'default-sa')]"
+    },
     "resources": [
         //Automatic navigation
         {
-            "name": "[toLower(concat(parameters('storage-name'), copyIndex()))]",
+            "name": "[toLower(concat(variables('storage-account-default-name'), copyIndex()))]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-01-01",
             "tags": {
                 "displayName": "Using Snipped to creation"
             },
             "location": "[resourceGroup().location]",
+            "condition": "[not(empty(parameters('storage-name')))]",
             "kind": "StorageV2",
             "sku": {
                 "name": "Premium_LRS",
