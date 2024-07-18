@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "sampleaks01",
+            "type": "Microsoft.ContainerService/managedClusters",
+            "apiVersion": "2023-01-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "kubernetesVersion": "1.28.9",
+                "dnsPrefix": "dnsprefix",
+                "agentPoolProfiles": [
+                         {
+                        "name": "agentpool",
+                        "count": 2,
+                        "vmSize": "Standard_D2s_v3",
+                        "osType": "Linux",
+                        "storageProfile": "ManagedDisks"
+                    },
+                    {
+                        "name": "systempool",
+                        "count":1,
+                        "vmSize": "Standard_D2s_v3",
+                        "osType": "Linux",
+                        "mode": "System"
+                    }
+                ],
+                
+                
+                "servicePrincipalProfile": {
+                   "clientId": "<Azure Entra ID - Application ID>",
+                    "secret": "<Azure Entra ID - Application Secret>"
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}

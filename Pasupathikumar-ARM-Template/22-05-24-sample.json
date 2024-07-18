@@ -1,28 +1,43 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storage-name": {
-            "type": "string"
-        }
-    },
-    "functions": [],
-    "variables": {
-    
-    },
     "resources": [
         {
-            "name": "[parameters('storage-name')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2023-01-01",
-            "tags": {
-                "displayName": "[parameters('storage-name')]"
-            },
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2019-09-01",
+            "name": "pasupathiadocredentials",
             "location": "[resourceGroup().location]",
-            "kind": "StorageV2",
-            "sku": {
-                "name": "Premium_LRS",
-                "tier": "Premium"
+            "properties": {
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                },
+                "tenantId": "[subscription().tenantId]",
+                "accessPolicies": []
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2019-09-01",
+            "name": "pasupathiadocredentials/clientId",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', 'pasupathiadocredentials')]"
+            ],
+            "properties": {
+                "value": "<Azure Entra ID - Application ID>"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2019-09-01",
+            "name": "pasupathiadocredentials/clientSecret",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', 'pasupathiadocredentials')]"
+            ],
+            "properties": {
+                "value": "<Azure Entra ID - Application secret>"
             }
         }
     ],
