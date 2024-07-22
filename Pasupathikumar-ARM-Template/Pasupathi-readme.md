@@ -1,4 +1,4 @@
-ARM-Template tutorial sessions
+<b>ARM-Template tutorial sessions</b>
 
 --> ARM stands for Azure Resource Management templates. It is manily use to create and manage the azure resources such as virtual machines, storage account, web app, management groups, custom roles, etc. 
 --> Using the AZ CLI commands for deployment the template files.
