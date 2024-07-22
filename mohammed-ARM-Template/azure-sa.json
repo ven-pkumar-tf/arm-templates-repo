@@ -6,17 +6,59 @@
     "variables": {},
     "resources": [
         {
-            "name": "mohammadsa01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2023-01-01",
-            "tags": {
-                "displayName": "mohammed557"
-            },
+            "name": "narayana-junior-college",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2022-09-01",
             "location": "[resourceGroup().location]",
-            "kind": "StorageV2",
             "sku": {
-                "name": "Premium_LRS",
-                "tier": "Premium"
+                "name": "F1",
+                "capacity": 1
+            },
+            "tags": {
+                "displayName": "narayana-junior-college"
+            },
+            "properties": {
+                "name": "narayana-junior-college"
+            }
+        },
+        {
+            "name": "terraform09",
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2022-09-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/narayana-junior-college')]": "Resource",
+                "displayName": "terraform09"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', 'narayana-junior-college')]"
+            ],
+            "properties": {
+                "name": "terraform09",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'narayana-junior-college')]",
+                "siteConfig": {
+                    "linuxFxVersion": "PYTHON|3.9"
+                }
+            }
+        },
+        {
+            "name": "terraform10-unique", // Updated name to make it unique
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2022-09-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/narayana-junior-college')]": "Resource",
+                "displayName": "terraform10"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', 'narayana-junior-college')]"
+            ],
+            "properties": {
+                "name": "terraform10-unique",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'narayana-junior-college')]",
+                "siteConfig": {
+                    "linuxFxVersion": "PYTHON|3.9"
+                }
             }
         }
     ],
