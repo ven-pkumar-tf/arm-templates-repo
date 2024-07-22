@@ -5,9 +5,7 @@
         "subscriptionId": {
             "type": "string"
         },
-        "resourceGroupName": {
-            "type": "string"
-        },
+
         "name": {
             "type": "string"
         },
