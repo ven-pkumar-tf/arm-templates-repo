@@ -1,0 +1,61 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "adosa01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2023-01-01",
+            "tags": {
+                "displayName": "testing-sa-01"
+            },
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Premium_LRS",
+                "tier": "Premium"
+            }
+        },
+        {
+            "name": "ado-cg-01",
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2023-05-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "containers": [
+                    {
+                        "name": "adotestingimage01",
+                        "properties": {
+                            "image": "containerImage",
+                            "ports": [
+                                {
+                                    "port": 80
+                                }
+                            ],
+                            "resources": {
+                                "requests": {
+                                    "cpu": 1,
+                                    "memoryInGB": 4
+                                }
+                            }
+                        }
+                    }
+                ],
+                "osType": "Linux",
+                "ipAddress": {
+                    "type": "Public",
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 80
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}

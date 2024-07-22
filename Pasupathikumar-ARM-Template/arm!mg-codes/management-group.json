@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "applicationSecurityGroup1",
+            "type": "Microsoft.Network/applicationSecurityGroups",
+            "apiVersion": "2023-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "properties": {}
+        }
+    ],
+    "outputs": {}
+}
