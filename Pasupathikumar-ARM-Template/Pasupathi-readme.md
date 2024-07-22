@@ -4,10 +4,10 @@
 --> Using the AZ CLI commands for deployment the template files.
 --> There are three commands to deploy the template file such as,
     - az login (login our account)
-    - az group create --name (resource-group-name) --location <location>
-    - az deployment group create --resource-group <resource-group-name> --template-file <template-file-location>
+    - az group create --name (resource-group-name) --location (location)
+    - az deployment group create --resource-group (resource-group-name) --template-file (template-file-location)
 
-ARM Template types:
+<b>ARM Template types:</b>
     There are five different types of schemas are available in ARM Template. they are
         - Resource group
         - Subscription
