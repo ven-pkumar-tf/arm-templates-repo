@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "user-identity-name": {
+            "value": "sample-user-identity"
+            },
+            "virtual-machine-name":{
+                "value": "ado-task-id"
+            },
+            "virtual-network-name":{
+                "value": "ado-task-vnet"
+            },
+            "user-mail-id":{
+                "value": "pasupathikumar819@gmail.com"
+            }
+        }
+    }
