@@ -16,3 +16,6 @@ Using this powershell code automatically create the several resources (stroage a
 
 
 
+
+
+
