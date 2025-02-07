@@ -13,3 +13,6 @@ Using this powershell code automatically create the several resources (stroage a
 
 **azure-storage-account.json** file is use to create the storage account with blob container.
 **azure-web-app.json** file is use to create the azure web app and web app service plan.
+
+
+
