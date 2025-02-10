@@ -15,7 +15,6 @@ Using this powershell code automatically create the several resources (stroage a
 **azure-web-app.json** file is use to create the azure web app and web app service plan.
 
 
-
 # Azure-DBW-Infrastructure
 
 ## Table of Contents
@@ -24,6 +23,7 @@ Using this powershell code automatically create the several resources (stroage a
 3. Purpose of these resources
 
 ## Resources
+
 Resource Group (Holds all resources)
  ├── VNet (For secure communication)
  ├── Databricks Workspace 
