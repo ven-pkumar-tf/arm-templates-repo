@@ -17,27 +17,33 @@ Using this powershell code automatically create the several resources (stroage a
 
 # Azure-DBW-Infrastructure
 
-## Table of Contents
-1. Resources List
-2. How the resources are connected
-3. Purpose of these resources
+## Overview
+This Runbook provides comprehensive guidelines on the resources available in this repository, their interactions, and the process of provisioning them across multiple environments, including development (Dev), testing (Test), and production (Prod).
 
 ## Resources
 
-1. Resource Group (Holds all resources)
-2. VNet (For secure communication)
-3. Databricks Workspace 
-4. Metastore Connection
-5. Catalogs (Holds schemas & tables)
-6. Schema (Contains tables & views)
-7. Tables & Delta Share Tables
-8. Table Grants (Permissions for access)
-9. Foreign Catalogs (External data sources)
-10. Cluster Policies (Rules for clusters)
-11. Data Share Recipients (External users who receive shared data)
-12. Secret Scope (Manages secrets via Key Vault)
-13. Log Analytics (Monitors usage & security)
-14. Storage Account (ADLS) - Stores data files
-15. External Locations (Securely connect Databricks to storage)
-16. Key Vault (Stores credentials securely)
+### Core Infrastructure
+1. Resource Group - Holds all resources.
+2. VNet - Enables secure communication between resources.
 
+### Databricks Components
+1. Databricks Workspace - Centralized environment for data analytics.
+2. Metastore Connection - Manages metadata storage and access.
+3. Catalogs - Organizes schemas and tables.
+4. Schema - Contains tables and views.
+5. Tables & Delta Share Tables - Stores structured and shared datasets.
+6. Table Grants - Defines access permissions for tables.
+7. Foreign Catalogs - Manages external data sources.
+
+### Security & Access Management
+1. Cluster Policies - Enforces rules and configurations for clusters.
+2. Data Share Recipients - Defines external users who receive shared data.
+3. Secret Scope - Securely manages secrets via Azure Key Vault.
+
+### Monitoring & Storage
+1. Log Analytics - Monitors infrastructure usage and security logs.
+2. Storage Account (ADLS) - Stores raw and processed data.
+3. External Locations - Securely connects Databricks to storage.
+4. Key Vault - Securely stores credentials and secrets.
+
+# Resource working process step by step
