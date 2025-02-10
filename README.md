@@ -24,19 +24,20 @@ Using this powershell code automatically create the several resources (stroage a
 
 ## Resources
 
-Resource Group (Holds all resources)
- ├── VNet (For secure communication)
- ├── Databricks Workspace 
- │    ├── Metastore Connection
- │    │    ├── Catalogs (Holds schemas & tables)
- │    │    │    ├── Schema (Contains tables & views)
- │    │    │    │    ├── Tables & Delta Share Tables
- │    │    │    ├── Table Grants (Permissions for access)
- │    │    │    ├── Foreign Catalogs (External data sources)
- │    ├── Cluster Policies (Rules for clusters)
- │    ├── Data Share Recipients (External users who receive shared data)
- │    ├── Secret Scope (Manages secrets via Key Vault)
- │    ├── Log Analytics (Monitors usage & security)
- ├── Storage Account (ADLS) - Stores data files
- │    ├── External Locations (Securely connect Databricks to storage)
- ├── Key Vault (Stores credentials securely)
+1. Resource Group (Holds all resources)
+2. VNet (For secure communication)
+3. Databricks Workspace 
+4. Metastore Connection
+5. Catalogs (Holds schemas & tables)
+6. Schema (Contains tables & views)
+7. Tables & Delta Share Tables
+8. Table Grants (Permissions for access)
+9. Foreign Catalogs (External data sources)
+10. Cluster Policies (Rules for clusters)
+11. Data Share Recipients (External users who receive shared data)
+12. Secret Scope (Manages secrets via Key Vault)
+13. Log Analytics (Monitors usage & security)
+14. Storage Account (ADLS) - Stores data files
+15. External Locations (Securely connect Databricks to storage)
+16. Key Vault (Stores credentials securely)
+
