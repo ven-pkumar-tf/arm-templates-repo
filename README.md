@@ -19,12 +19,12 @@ Using this powershell code automatically create the several resources (stroage a
 # Azure-DBW-Infrastructure
 
 ## Table of Contents
-[1. Resources List]
-[2. How the resources are connected]
-[3. Purpose of these resources] 
+1. Resources List
+2. How the resources are connected
+3. Purpose of these resources
 
 ## Resources
----
+
 Resource Group (Holds all resources)
  ├──VNet (For secure communication)
  ├── Databricks Workspace 
@@ -41,5 +41,3 @@ Resource Group (Holds all resources)
  ├── Storage Account (ADLS) - Stores data files
  │    ├── External Locations (Securely connect Databricks to storage)
  ├── Key Vault (Stores credentials securely)
-
----
