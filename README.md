@@ -16,3 +16,30 @@ Using this powershell code automatically create the several resources (stroage a
 
 
 
+# Azure-DBW-Infrastructure
+
+## Table of Contents
+[1. Resources List]
+[2. How the resources are connected]
+[3. Purpose of these resources] 
+
+## Resources
+---
+Resource Group (Holds all resources)
+ ├──VNet (For secure communication)
+ ├── Databricks Workspace 
+ │    ├── Metastore Connection
+ │    │    ├── Catalogs (Holds schemas & tables)
+ │    │    │    ├── Schema (Contains tables & views)
+ │    │    │    │    ├── Tables & Delta Share Tables
+ │    │    │    ├── Table Grants (Permissions for access)
+ │    │    │    ├── Foreign Catalogs (External data sources)
+ │    ├── Cluster Policies (Rules for clusters)
+ │    ├── Data Share Recipients (External users who receive shared data)
+ │    ├── Secret Scope (Manages secrets via Key Vault)
+ │    ├── Log Analytics (Monitors usage & security)
+ ├── Storage Account (ADLS) - Stores data files
+ │    ├── External Locations (Securely connect Databricks to storage)
+ ├── Key Vault (Stores credentials securely)
+
+---
