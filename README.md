@@ -24,9 +24,8 @@ Using this powershell code automatically create the several resources (stroage a
 3. Purpose of these resources
 
 ## Resources
-
 Resource Group (Holds all resources)
- ├──VNet (For secure communication)
+ ├── VNet (For secure communication)
  ├── Databricks Workspace 
  │    ├── Metastore Connection
  │    │    ├── Catalogs (Holds schemas & tables)
